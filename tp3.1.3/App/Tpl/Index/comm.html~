@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+欢迎使用 <b>TPM</b>! this the comm.html of Index
+	<h1>this is the bbsindex.html of Ebbsview directory</h1>
+	
+	<foreach name='list' item='v'>
+		<p>{$v.commid}</p>
+	</foreach>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="author" content="luminshi">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+    <link href="_PUBLIC_/css/bootstrap.css" rel="stylesheet" type="text/css" charset="utf-8" />
+    <link href="_PUBLIC_/css/css.css" rel="stylesheet" >
+    <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">-->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap-wysiwyg.js"></script>
+    <script src="__PUBLIC__/js/write.js"></script>
+
+    <title>管理通知公告</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="mynav">
+        <nav class="navbar navbar-inverse ">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo U('Index/arrangeIndex');?>">English论坛管理</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="">
+                            <a  href="<?php echo U('Index/arrangeIndex');?>" role="button" aria-haspopup="true" aria-expanded="false">
+                                发布
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理帖子<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?php echo U('Index/arrangenotice');?>">通知公告</a></li>
+                                <li><a href="<?php echo U('Index/arrangemovie');?>">影视交流</a></li>
+                                <li><a href="<?php echo U('Index/arrangeeveryday');?>">每日英语</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <p class="navbar-text">欢迎您：luminshi</p>
+                        <li class="">
+                            <a href="<?php echo U('Index/login');?>">退出</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="movie">
+        <div class="panel panel-success">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                管理通知公告
+            </div>
+
+            <!-- List group -->
+            <ul class="list-group">
+                <?php if(is_array($ntlist)): foreach($ntlist as $key=>$nt): ?><li  class="list-group-item">
+                        <?php echo ($nt["nttitle"]); ?>
+                        <span class="pull-right">
+                            <?php echo ($nt["nttime"]); ?>
+                            <button class="btn btn-danger btn-xs"  role="button" data-toggle="modal" data-target=".bs-example-modal-sm">
+                                删除
+                            </button>
+                            <button class="btn btn-success btn-xs" role="button" data-toggle="modal" data-target="#myModal">
+                                查看
+                            </button>
+                        </span>
+                    </li><?php endforeach; endif; ?>
+            </ul>
+        </div>
+    </div>
+
+    <div class="">
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <br>
+    <div class="foot">
+        <div class="well well-sm">
+            <div class="container">
+                <div class="text-center">
+                    <h5>Copyright &copy; <span>2016&nbsp;English论坛</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">通知公告标题</h4>
+                </div>
+                <div class="modal-body">
+                    内容内容
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Small modal -->
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">确定删除？</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+</body>
+</html>

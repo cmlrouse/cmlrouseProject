@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="author" content="luminshi">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" charset="utf-8" />
+    <link href="__PUBLIC__/css/css.css" rel="stylesheet" >
+    <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">-->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <title>English论坛管理</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="mynav">
+        <nav class="navbar navbar-inverse ">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{:U('Admin/arrangeIndex')}">English论坛管理</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="">
+                            <a  href="{:U('Admin/arrangeIndex')}" role="button" aria-haspopup="true" aria-expanded="false">
+                                发布
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理帖子<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:U('Admin/arrangenotice')}">通知公告</a></li>
+                                <li><a href="{:U('Admin/arrangemovie')}">影视交流</a></li>
+                                <li><a href="{:U('Admin/arrangeeveryday')}">每日英语</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <p class="navbar-text">欢迎您：{$userline.username}</p>
+                        <li class="">
+                            <a href="{:U('Index/login')}">退出</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+     <div class="passage">
+        <div class="row">
+            <div class="col-md-9 comment">
+                <div>
+                    	<a id="command" class="btn btn-success" role="button" data-toggle="modal" data-target="#myModal1">评论</a>
+			<a class="btn btn-success pull-right" href="{:U('Admin/arrangeeveryday',array('userid'=>$userline['userid']))}" role="button">返回列表</a>
+                </div>
+                <br>
+		<input id="eeid" type="hidden" name="eeid" value="{$eeline.eeid}">
+		<input id="commuserid" type="hidden" name="commuserid" value="{$userline.userid}">
+                <h3>{$eeline.eetitle}</h3>
+                <h6>发表时间：{$eeline.eetime}</h6>
+                <p>{$eeline.eecont}</p>
+            </div>
+        </div>
+    </div>
+<volist name="data" id="commlist">
+    <div class="passage">
+        <div class="row">
+            <div class="col-md-9 comment">
+                <h6>(1)发表时间：{$commlist.commtime}</h6>
+                <p>
+                    <span>{$commlist.username} 回复&nbsp;{$eeline.username}</span>
+               		{$commlist.commcont}
+		</p>
+            </div>
+        </div>
+
+ <volist name="commlist.children" id="child">
+	<div class="passage">
+        <div class="row">
+            <div class="col-md-9 comment">
+                <h6>(2)发表时间：{$child.commtime}</h6>
+                <p>
+                    <span>{$child.username} 回复&nbsp;{$commlist.username}</span>
+                        {$child.commcont}
+                </p>
+            </div>
+        </div>
+	</div>
+	<volist name="child.children" id="grandson">
+        <div class="passage">
+        <div class="row">
+            <div class="col-md-9 comment">
+                <h6>(3)发表时间：{$grandson.commtime}</h6>
+		<p>          
+                	 <span>{$grandson.username} 回复&nbsp;{$child.username}</span>
+                        {$grandson.commcont}
+                </p>
+            </div>
+        </div>
+        </div>
+        </volist>
+	</volist>
+</volist>
+  <br>
+
+    <div class="foot">
+        <div class="well well-sm">
+            <div class="container">
+                <div class="text-center">
+                    <h5>Copyright &copy; <span>2016&nbsp;English论坛</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

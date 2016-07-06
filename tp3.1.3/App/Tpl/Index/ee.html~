@@ -1,0 +1,21 @@
+<DOCTYPE html>
+<html>
+<head>
+        <title></title>
+</head>
+<body>
+欢迎使用 <b>TPM</b>! this the ee.html of Index
+        <h1>this is the recomm.html of Ebbsview directory</h1>
+	<a href="/Index/notice">点击我</a>
+        <!--<foreach name='eelist' item='v'>
+                <p>{$v.eeid}</p>
+                <p>{$v.eetitle}</p>
+                <p>{$v.eecont}</p>
+                <p>{$v.eetime}</p>
+		<p>{$v.username}</p>
+        </foreach>
+-->
+</body>
+</html>
+
+
